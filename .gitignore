@@ -1,0 +1,12 @@
+bin/
+*.jpg
+*.txt
+*.docx
+*.pyc
+*.pkl
+include/
+lib/
+lib64/
+local/
+pip-selfcheck.json
+testdocx.py
