@@ -14,7 +14,7 @@ print 'd36 = ', d36.__dict__
 dl = d36.divs.keys()
 dl.sort()
 document = Document()
-document.add_heading('Division 36 Late Dues Report', 0)
+document.add_heading('D36 Late Dues Report - %s' % (d36.get_dashdate()), 0)
 for d in dl:
    document.add_heading('Division %s' % (d), level=1)
    print '\nDivision %s' % (d)
@@ -42,6 +42,9 @@ for d in dl:
                row_cells[2].text = str(c.october)
                firstarea = True
                print '      %-58s   %2d   %2d' % (c.name, c.nbase, c.october)
-   document.add_page_break()
+   if d != dl[-1]:
+      document.add_page_break()
 
-document.save('demo.docx')
+outfname = 'latedues_%s.docx' % (d36.get_dashdate())
+print 'output file name = ', outfname
+document.save(outfname)
